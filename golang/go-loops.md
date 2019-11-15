@@ -1,0 +1,93 @@
+# Looping
+
+## Syntax
+### Standard
+```go
+for i := 0; i < 5; i++ { // no parens, i is scoped to the for loop
+	fmt.Println(i)
+}
+```
+
+### Multiple variables that increment
+```go
+for i, j := 0, 0; i < 5; i, j = i+1, j+2 { // initialize to vars at same time
+	fmt.Println(i, j)
+}
+```
+Note: in go, incrementing is a statement (i++), and only one statement is allowed, so we have to do i+1 and j+1
+
+### Incrementing var is defined elsewhere in program
+```go
+func main() {
+	i := 0 // i defined outside the loop
+	for ; i < 5; i++ { // leave the first position blank
+		fmt.Println(i)
+	}
+}
+```
+
+### While loop equivalent
+```go
+func main() {
+	i := 0
+	for i < 5 { // just a comparison operation here
+		fmt.Println(i)
+		i++
+	}
+}
+```
+
+### Infinite loop
+```go
+func main() {
+	i := 0
+	for {
+		fmt.Println(i)
+		i++
+		if i == 5 { // do some more complex logic that determines when to exit the loop
+			break
+		}
+	}
+}
+```
+
+### Continue keyword
+```go
+func main() {
+	for i := 0; i < 10; i++ {
+		if i%2 == 0 {
+			continue // exit this iteration and start at the next one
+		}
+		fmt.Println(i) // only odd values of i will result in this being executed
+	}
+}
+```
+
+### Nested
+```go
+for i := 1; i <= 3; i++ {
+	for j := 1; j <= 3; j++ {
+		fmt.Println(i * j)
+	}
+}
+```
+
+### Looping through a collection (```For...Range``` loop)
+slices, arrays, maps, strings
+```go
+func main() {
+	s := []int{1, 2, 3}
+	for k, v := range s { // set the key and value to the "range" keyword and provide the collection name
+		fmt.Println(k, v)
+	}
+}
+```
+
+```go
+func main() {
+	s := "hello"
+	for k, v := range s {
+		fmt.Println(k, string(v)) // need to convert the unicode value into the string it represents
+	}
+}
+```
