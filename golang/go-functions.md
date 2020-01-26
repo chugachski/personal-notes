@@ -46,7 +46,7 @@ func main() {
 	if err != nil { // error handling
 		fmt.Println(err)
 		return
-	}	
+	}
 	fmt.Println(d)
 }
 
